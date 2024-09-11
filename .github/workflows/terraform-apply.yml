@@ -13,6 +13,8 @@ jobs:
     name: Run Terraform
     runs-on: ubuntu-latest
     steps:
+      - name: chekck the statefile 
+        run: ls -l 
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -35,9 +37,16 @@ jobs:
         run: terraform plan
 
 
-      - name: Terraform Apply
+      - name: Terraform Apply -auto-approbe
        # env:
+<<<<<<< HEAD
        #   TF_VAR_example: ${{ secrets.TF_VAR_EXAMPLE }}
         run: terraform destroy -auto-approve
         # Use `-auto-approve` only if you are sure about the changes. 
         # Remove this flag if you want to review changes before applying.
+=======
+      #  #   TF_VAR_example: ${{ secrets.TF_VAR_EXAMPLE }}
+      #   run: terraform destroy -auto-approve
+      #   # Use `-auto-approve` only if you are sure about the changes. 
+      #   # Remove this flag if you want to review changes before applying.
+>>>>>>> 91ba10566ca414d8634cdde5d88168625a136948
