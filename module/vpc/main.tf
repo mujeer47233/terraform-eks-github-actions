@@ -105,3 +105,20 @@ resource "aws_route_table_association" "subnet_4_assoc" {
   subnet_id      = aws_subnet.subnet_4.id
   route_table_id = aws_route_table.private_rt.id
 }
+
+output "subnet1" {
+  value = aws_subnet.subnet_1.id
+  
+}
+output "subnet2" {
+  value = aws_subnet.subnet_2.id
+  
+}
+output "subnet3" {
+  value = aws_subnet.subnet_3.id
+  
+}
+output "subnet4" {
+  value = aws_subnet.subnet_4.id
+  
+}
