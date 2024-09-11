@@ -15,13 +15,10 @@ module "vpc" {
     source = "./module/vpc"
   
 }
-/*
+
 module "eks" {
     source = "./module/eks"
-    vpc_config {
-      subnet_ids = [module.vpc.subnet1, module.vpc.subnet2, module.vpc.subnet3, module.vpc.subnet4]
-    }
-  
+
 }
 #updated
-*/
+
