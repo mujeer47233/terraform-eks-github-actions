@@ -15,7 +15,7 @@ module "vpc" {
     source = "./module/vpc"
   
 }
-
+/*
 module "eks" {
     source = "./module/eks"
     vpc_config {
@@ -24,3 +24,4 @@ module "eks" {
   
 }
 #updated
+*/
