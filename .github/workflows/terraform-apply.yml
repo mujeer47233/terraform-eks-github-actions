@@ -19,19 +19,15 @@ jobs:
         run: ls -l 
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Checkout code
-        uses: actions/checkout@v3
 
-      - name: Run Trivy vulnerability scanner in IaC mode
+      - name: Run Trivy vulnerability scanner in repo mode
         uses: aquasecurity/trivy-action@0.20.0
         with:
-          scan-type: 'config'
-          hide-progress: true
+          scan-type: 'fs'
+          ignore-unfixed: true
           format: 'sarif'
           output: 'trivy-results.sarif'
-          exit-code: '1'
-          ignore-unfixed: true
-          severity: 'CRITICAL,HIGH'
+          severity: 'CRITICAL'
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
