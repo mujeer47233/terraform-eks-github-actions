@@ -24,20 +24,20 @@ jobs:
           terraform_version: 1.9.0 # Specify the Terraform version you need
 
       - name: Terraform Init
-        run: terraform init -migrate-state
-      # - name: Configure AWS credentials
-      #   uses: aws-actions/configure-aws-credentials@v2
-      #   with:
-      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID}}
-      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     aws-region: eu-west-2
+        run: terraform init
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID}}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-2
 
-      # - name: Terraform Plan
-      #   run: terraform plan
+      - name: Terraform Plan
+        run: terraform plan
 
 
-      # - name: Terraform Apply
-      #  # env:
+      - name: Terraform Apply -auto-approbe
+       # env:
       #  #   TF_VAR_example: ${{ secrets.TF_VAR_EXAMPLE }}
       #   run: terraform destroy -auto-approve
       #   # Use `-auto-approve` only if you are sure about the changes. 
