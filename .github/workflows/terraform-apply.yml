@@ -1,0 +1,35 @@
+name: Terraform
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  terraform:
+    name: Run Terraform
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.9.0 # Specify the Terraform version you need
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan
+
+      - name: Terraform Apply
+        env:
+          TF_VAR_example: ${{ secrets.TF_VAR_EXAMPLE }}
+        run: terraform apply -auto-approve
+        # Use `-auto-approve` only if you are sure about the changes. 
+        # Remove this flag if you want to review changes before applying.

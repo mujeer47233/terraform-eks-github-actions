@@ -2,9 +2,14 @@ terraform {
   required_version = "~> 1.9.0"
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.66.0"
+      version = ">= 5.99.0"
+      source = "hashicorp/aws"
     }
+  }
+  backend "s3" {
+    bucket = "testing-testing-us-east-1"
+    key    = "statefile"
+    region = "us-east-1"
   }
 }
 
