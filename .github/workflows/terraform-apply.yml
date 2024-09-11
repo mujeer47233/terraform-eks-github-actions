@@ -52,4 +52,4 @@ jobs:
       - name: Terraform Apply -auto-approbe
         env:
           TF_VAR_example: ${{ secrets.TF_VAR_EXAMPLE }}
-        run: terraform destroy -auto-approve
+        run: terraform apply -auto-approve
