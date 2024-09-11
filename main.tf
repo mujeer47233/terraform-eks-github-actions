@@ -18,7 +18,9 @@ module "vpc" {
 
 module "eks" {
     source = "./module/eks"
-    subnet_ids = [module.vpc.subnet1, module.vpc.subnet2, module.vpc.subnet3, module.vpc.subnet4]
+    vpc_config {
+      subnet_ids = [module.vpc.subnet1, module.vpc.subnet2, module.vpc.subnet3, module.vpc.subnet4]
+    }
   
 }
 #updated
