@@ -31,11 +31,11 @@ resource "aws_iam_role_policy_attachment" "eks-AmazonEKSVPCResourceController" {
 # EKS cluster creation
 
 resource "aws_eks_cluster" "dxlab" {
-  name = "dxlab-dev-eks"
+  name = "test"
   role_arn = aws_iam_role.eks_cluster.arn
 
   vpc_config {
-    subnet_ids = [var,subnet1, var.subnet2, var.subnet3, var.subnet4]
+    subnet_ids = var.subnets_ids
   }
   depends_on = [
     aws_iam_role_policy_attachment.eks-AmazonEKSClusterPolicy,
@@ -45,7 +45,7 @@ resource "aws_eks_cluster" "dxlab" {
 
 
 resource "aws_iam_role" "nodes" {
-  name = "dxlab-dev-nodes-role"
+  name = "node-role"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     "Statement": [
@@ -90,7 +90,7 @@ resource "aws_iam_role_policy_attachment" "Amazon_EKS_ServicePolicy" {
 # EKS Node group
 
 resource "aws_eks_node_group" "private-nodes" {
-  cluster_name = aws_eks_cluster.dxlab.name
+  cluster_name = test-node-group
   node_group_name = "private-nodes"
   node_role_arn = aws_iam_role.nodes.arn
   remote_access {
