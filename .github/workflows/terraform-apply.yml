@@ -13,6 +13,8 @@ jobs:
     name: Run Terraform
     runs-on: ubuntu-latest
     steps:
+      - name: chekck the statefile 
+        run: ls -l 
       - name: Checkout code
         uses: actions/checkout@v3
 
