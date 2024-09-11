@@ -1,4 +1,19 @@
 # eks iam role for eks cluster
+data "aws_subnet" "subnet1" {
+  id = "subnet-0decafc3fe3f9b85e"
+}
+
+data "aws_subnet" "subnet2" {
+  id = "subnet-0bde82f3a520a4929"
+}
+
+data "aws_subnet" "subnet3" {
+  id = "subnet-08248eff38509f812"
+}
+
+data "aws_subnet" "subnet4" {
+  id = "subnet-02ecef9c46dd26b85"
+}
 
 resource "aws_iam_role" "eks_cluster" {
   name = "cluster-role"
@@ -35,7 +50,7 @@ resource "aws_eks_cluster" "dxlab" {
   role_arn = aws_iam_role.eks_cluster.arn
 
   vpc_config {
-    subnet_ids = var.subnets_ids
+    subnet_ids = var.subnet_ids
   }
   depends_on = [
     aws_iam_role_policy_attachment.eks-AmazonEKSClusterPolicy,
