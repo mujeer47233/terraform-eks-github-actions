@@ -50,7 +50,7 @@ resource "aws_eks_cluster" "dxlab" {
   role_arn = aws_iam_role.eks_cluster.arn
 
   vpc_config {
-    subnet_ids = var.subnet_ids
+    subnet_ids = [data.aws_subnet.subnet1.id, data.aws_subnet.subnet2.id, data.aws_subnet.subnet3.id, data.aws_subnet.subnet4.id]
   }
   depends_on = [
     aws_iam_role_policy_attachment.eks-AmazonEKSClusterPolicy,
