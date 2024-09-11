@@ -105,7 +105,7 @@ resource "aws_iam_role_policy_attachment" "Amazon_EKS_ServicePolicy" {
 # EKS Node group
 
 resource "aws_eks_node_group" "private-nodes" {
-  cluster_name = test-node-group
+  cluster_name = "test-node-group"
   node_group_name = "private-nodes"
   node_role_arn = aws_iam_role.nodes.arn
   remote_access {
