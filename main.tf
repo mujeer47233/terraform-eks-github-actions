@@ -1,9 +1,10 @@
 module "vpc" {
-    source = "./vpc"
+    source = "./module/vpc"
   
 }
-
+/*
 module "eks" {
-    source = "./eks"
+    source = "./module/eks"
   
 }
+*/
