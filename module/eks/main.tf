@@ -1,12 +1,5 @@
 # for accessing you need to give permissions using access_key and secrear_key or role need to assign to instance
 terraform {
-  required_version = "~> 1.9.0"
-  required_providers {
-    aws = {
-      version = ">= 5.66.0"
-      source = "hashicorp/aws"
-    }
-  }
   backend "s3" {
     bucket = "testing-testing-us-east-1"
     key    = "statefile"
