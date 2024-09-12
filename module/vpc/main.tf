@@ -23,11 +23,11 @@ resource "aws_subnet" "subnet_1" {
 resource "aws_subnet" "subnet_2" {
   vpc_id     = aws_vpc.my_vpc.id
   cidr_block = var.cidr_subnet_2
-  availability_zone = "us-east-1b"  # Choose an appropriate availability zone var.ag_subnet_2
+  availability_zone = var.ag_subnet_2  # Choose an appropriate availability zone 
   map_public_ip_on_launch = var.map_public_ip_on_launch
 
   tags = {
-    Name = "subnet-2"   var.subnet-2_name
+    Name = var.subnet-2_name  
   }
 }
 
