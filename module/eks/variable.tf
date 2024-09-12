@@ -44,3 +44,8 @@ variable "ssh_key" {
 variable "eks_master_version" {
   
 }
+
+variable "region" {
+    default = "us-west-2"
+  
+}

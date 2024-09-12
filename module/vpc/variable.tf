@@ -55,3 +55,7 @@ variable "route_name" {
 variable "subnet-4_name" {
 
 }
+variable "region" {
+    default = "us-west-2"
+  
+}
