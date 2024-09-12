@@ -48,8 +48,9 @@ module "eks" {
     max_size                 = 3
     min_size                 =   2
     max_unavailable          = 2 
-    ssh_key = "eks"
+    ssh_key                  = "eks"
     cluster_node_group_name = "eks-cluster-node-group"
+    eks_master_version       = "1.30"
 
 
 }

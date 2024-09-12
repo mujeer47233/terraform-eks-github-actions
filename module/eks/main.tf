@@ -51,6 +51,7 @@ resource "aws_iam_role_policy_attachment" "eks-AmazonEKSVPCResourceController" {
 resource "aws_eks_cluster" "dxlab" {
   name = var.cluster_name 
   role_arn = aws_iam_role.eks_cluster.arn
+  version = var.eks_master_version
 
   vpc_config {
     subnet_ids = [data.aws_subnet.subnet1.id, data.aws_subnet.subnet2.id, data.aws_subnet.subnet3.id, data.aws_subnet.subnet4.id]

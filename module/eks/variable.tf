@@ -41,3 +41,6 @@ variable max_unavailable {
 variable "ssh_key" {
 
 }
+variable "eks_master_version" {
+  
+}
