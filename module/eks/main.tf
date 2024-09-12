@@ -1,4 +1,15 @@
-# eks iam role for eks cluster
+# eks iam role for eks 
+terraform {
+  backend "s3" {
+    bucket = "testing-testing-us-east-1"
+    key    = "statefile/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"  # Choose the AWS region you want to deploy to
+}
 data "aws_subnet" "subnet1" {
   id = var.subnet1
 }
