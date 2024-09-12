@@ -116,13 +116,13 @@ resource "aws_eks_node_group" "private-nodes" {
   instance_types = var.instance_type
 
   scaling_config {
-    desired_size = 2 var.desired_size
-    max_size     = 3 var.max_size
-    min_size     = 2 var.min_size 
+    desired_size = var.desired_size
+    max_size     = var.max_size
+    min_size     = var.min_size 
 
   }
   update_config {
-    max_unavailable = 2 var.max_unavailable
+    max_unavailable = var.max_unavailable
   }
   depends_on = [
     aws_iam_role_policy_attachment.nodes-AmazonEKSWorkerNodePolicy,
