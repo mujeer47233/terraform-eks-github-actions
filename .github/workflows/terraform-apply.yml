@@ -40,14 +40,10 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::982534365201:role/github_actions
           aws-region: eu-west-2
-      - name: Terraform validate
-        run: terraform validate
-
       - name: Terraform Init
         run: terraform init
-
-
-
+      - name: Terraform validate
+        run: terraform validate
       - name: Terraform Plan
         run: terraform plan
     #updated repo
