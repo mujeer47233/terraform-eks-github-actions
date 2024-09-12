@@ -33,10 +33,24 @@ module "vpc" {
 
   
 }
-/*
+
 module "eks" {
     source = "./module/eks"
+    subnet1   = module.vpc.subnet1
+    subnet2   = module.vpc.subnet2
+    subnet3   = module.vpc.subnet3
+    subnet4   = module.vpc.subnet4
+    cluster_role_name = "cluster-role"     
+    cluster_name  = "test" 
+    iam_role_node  = "node-role"
+    eks_node_group_cluster_name  = "test-node-group" 
+    cluster_node_group_name  = "private-nodes" 
+    instance_type   = ["t2.micro"]  
+    desired_size  = 2
+    max_size   =       3
+    min_size   =   2
+    max_unavailable = 2 
+
 
 }
 #updated
-*/

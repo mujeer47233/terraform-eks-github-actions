@@ -16,7 +16,7 @@ data "aws_subnet" "subnet4" {
 }
 
 resource "aws_iam_role" "eks_cluster" {
-  name = "cluster-role"
+  name = var.cluster_role_name
 
   assume_role_policy = jsonencode({
     Version =  "2012-10-17"
@@ -46,7 +46,7 @@ resource "aws_iam_role_policy_attachment" "eks-AmazonEKSVPCResourceController" {
 # EKS cluster creation
 
 resource "aws_eks_cluster" "dxlab" {
-  name = "test"
+  name = var.cluster_name 
   role_arn = aws_iam_role.eks_cluster.arn
 
   vpc_config {
@@ -60,7 +60,7 @@ resource "aws_eks_cluster" "dxlab" {
 
 
 resource "aws_iam_role" "nodes" {
-  name = "node-role"
+  name = var.iam_role_node  
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     "Statement": [
@@ -105,24 +105,24 @@ resource "aws_iam_role_policy_attachment" "Amazon_EKS_ServicePolicy" {
 # EKS Node group
 
 resource "aws_eks_node_group" "private-nodes" {
-  cluster_name = "test-node-group"
-  node_group_name = "private-nodes"
+  cluster_name = var.eks_node_group_cluster_name
+  node_group_name = var.cluster_node_group_name
   node_role_arn = aws_iam_role.nodes.arn
   remote_access {
   ec2_ssh_key = "eks" 
   }
 
   subnet_ids = [data.aws_subnet.subnet1.id, data.aws_subnet.subnet2.id]
-  instance_types = ["t2.micro"]
+  instance_types = var.instance_type
 
   scaling_config {
-    desired_size = 2
-    max_size     = 3
-    min_size     = 2
+    desired_size = 2 var.desired_size
+    max_size     = 3 var.max_size
+    min_size     = 2 var.min_size 
 
   }
   update_config {
-    max_unavailable = 2
+    max_unavailable = 2 var.max_unavailable
   }
   depends_on = [
     aws_iam_role_policy_attachment.nodes-AmazonEKSWorkerNodePolicy,
