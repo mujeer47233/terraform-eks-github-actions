@@ -11,6 +11,7 @@ variable "ag_subnet_1" {
   
 }
 variable "map_public_ip_on_launch" {
+    type = bool
   
 }
 variable "subnet-1_name" {
@@ -51,5 +52,5 @@ variable "route_name" {
 }
 
 variable "subnet-4_name" {
-    
+
 }

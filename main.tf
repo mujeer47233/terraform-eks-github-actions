@@ -17,7 +17,7 @@ module "vpc" {
     vpc_name                 = "my_vpc"  
     cidr_subnet_1            = "10.0.0.0/18"
     ag_subnet_1              = "us-east-1a"
-    map_public_ip_on_launch  = "false"  
+    map_public_ip_on_launch  = false
     subnet-1_name         = "subnet-1" 
     cidr_subnet_2         = "10.0.64.0/18"  
     ag_subnet_2           = "us-east-1b"
