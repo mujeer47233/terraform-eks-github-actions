@@ -19,6 +19,9 @@ jobs:
         run: ls -l 
       - name: Checkout code
         uses: actions/checkout@v3
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Trivy vulnerability scanner in repo mode
         uses: aquasecurity/trivy-action@0.20.0
@@ -52,5 +55,5 @@ jobs:
       - name: Terraform Apply -auto-approbe
         env:
           TF_VAR_example: ${{ secrets.TF_VAR_EXAMPLE }}
-        run: terraform destroy -auto-approve
+        run: terraform plan -auto-approve
 #destroying 2 times
