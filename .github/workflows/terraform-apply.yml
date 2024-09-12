@@ -51,4 +51,4 @@ jobs:
 
       - name: Terraform Apply -auto-approbe
         run: terraform apply auto-approve
-#destroying 2 times updated
+#destroying 2 times updated done
