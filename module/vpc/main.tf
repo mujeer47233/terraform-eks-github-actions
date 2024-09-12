@@ -46,7 +46,7 @@ resource "aws_subnet" "subnet_4" {
   vpc_id     = aws_vpc.my_vpc.id
   cidr_block = var.cidr_subnet_4
   availability_zone =  var.ag_subnet_4 # Choose an appropriate availability zone  
-  map_public_ip_on_launch = favar.map_public_ip_on_launchlse
+  map_public_ip_on_launch = var.map_public_ip_on_launch
 
   tags = {
     Name = var.subnet-4_name
