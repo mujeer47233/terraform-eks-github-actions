@@ -49,3 +49,7 @@ variable "nat_gateway_name" {
 variable "route_name" {
   
 }
+
+variable "subnet-4_name" {
+    
+}
