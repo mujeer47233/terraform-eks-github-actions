@@ -110,7 +110,7 @@ resource "aws_iam_role_policy_attachment" "Amazon_EKS_ServicePolicy" {
 # EKS Node group
 
 resource "aws_eks_node_group" "private-nodes" {
-  cluster_name = var.cluster_name
+  cluster_name = aws_eks_cluster.dxlab.name
   node_group_name = var.cluster_node_group_name
   node_role_arn = aws_iam_role.nodes.arn
   remote_access {
