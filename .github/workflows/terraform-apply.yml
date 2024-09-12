@@ -51,4 +51,4 @@ jobs:
 
       - name: Terraform Apply -auto-approbe
         run: terraform plan
-#destroying 2 times
+#destroying 2 times updated
