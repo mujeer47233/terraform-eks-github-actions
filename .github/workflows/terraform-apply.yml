@@ -49,6 +49,6 @@ jobs:
     #updated repo
 
 
-      - name: Terraform destroy -auto-approve
-        run: terraform destroy -auto-approve
+      - name: Terraform apply -auto-approve
+        run: terraform apply -auto-approve
 #destroying 2 times updated done
