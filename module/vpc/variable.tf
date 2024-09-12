@@ -12,6 +12,7 @@ variable "ag_subnet_1" {
 }
 variable "map_public_ip_on_launch" {
     type = bool
+    default = false
   
 }
 variable "subnet-1_name" {
