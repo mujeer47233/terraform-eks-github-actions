@@ -111,7 +111,7 @@ resource "aws_eks_node_group" "private-nodes" {
   node_group_name = var.cluster_node_group_name
   node_role_arn = aws_iam_role.nodes.arn
   remote_access {
-  ec2_ssh_key = "eks" 
+  ec2_ssh_key = "eks"
   }
 
   subnet_ids = [data.aws_subnet.subnet1.id, data.aws_subnet.subnet2.id]

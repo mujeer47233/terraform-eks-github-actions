@@ -19,9 +19,6 @@ variable cluster_name {
 variable iam_role_node  {
 
 }
-variable eks_node_group_cluster_name {
-
-}
 variable cluster_node_group_name {
 
 }
@@ -38,5 +35,9 @@ variable min_size {
 
 }
 variable max_unavailable {
+
+}
+
+variable "ssh_key" {
 
 }
