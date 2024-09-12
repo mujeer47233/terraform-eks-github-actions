@@ -50,7 +50,5 @@ jobs:
 
 
       - name: Terraform Apply -auto-approbe
-        env:
-          TF_VAR_example: ${{ secrets.TF_VAR_EXAMPLE }}
         run: terraform plan -auto-approve
 #destroying 2 times
