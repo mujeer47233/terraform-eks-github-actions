@@ -1,62 +1,63 @@
 
 resource "aws_vpc" "my_vpc" {
 
-  cidr_block = "10.0.0.0/16"
+  cidr_block = var.vpc_cidr_block_range
   enable_dns_support = true
   enable_dns_hostnames = true
 
   tags = {
-    Name = "my_vpc"
+    Name = var.vpc_name
   }
 }
-
 resource "aws_subnet" "subnet_1" {
   vpc_id     = aws_vpc.my_vpc.id
-  cidr_block = "10.0.0.0/18"
-  availability_zone = "us-east-1a"  # Choose an appropriate availability zone
-  map_public_ip_on_launch = false
+  cidr_block = var.cidr_subnet_1
+  availability_zone = var.ag_subnet_1
+  map_public_ip_on_launch = var.map_public_ip_on_launch
 
   tags = {
-    Name = "subnet-1"
+    Name = var.subnet-1_name
   }
 }
 
 resource "aws_subnet" "subnet_2" {
   vpc_id     = aws_vpc.my_vpc.id
-  cidr_block = "10.0.64.0/18"
-  availability_zone = "us-east-1b"  # Choose an appropriate availability zone
-  map_public_ip_on_launch = false
+  cidr_block = var.cidr_subnet_2
+  availability_zone = "us-east-1b"  # Choose an appropriate availability zone var.ag_subnet_2
+  map_public_ip_on_launch = var.map_public_ip_on_launch
 
   tags = {
-    Name = "subnet-2"
+    Name = "subnet-2"   var.subnet-2_name
   }
 }
 
+
 resource "aws_subnet" "subnet_3" {
-  vpc_id     = aws_vpc.my_vpc.id
-  cidr_block = "10.0.128.0/18"
-  availability_zone = "us-east-1c"  # Choose an appropriate availability zone
-  map_public_ip_on_launch = false
+  vpc_id     = aws_vpc.my_vpc.id  
+  cidr_block = var.cidr_subnet_3 
+  availability_zone =  var.ag_subnet_3 # Choose an appropriate availability zone  
+  map_public_ip_on_launch = var.map_public_ip_on_launch
 
   tags = {
-    Name = "subnet-3"
+    Name = var.subnet-3_name
   }
 }
 resource "aws_subnet" "subnet_4" {
   vpc_id     = aws_vpc.my_vpc.id
-  cidr_block = "10.0.192.0/18"
-  availability_zone = "us-east-1d"  # Choose an appropriate availability zone
-  map_public_ip_on_launch = false
+  cidr_block = var.cidr_subnet_4
+  availability_zone =  var.ag_subnet_4 # Choose an appropriate availability zone  
+  map_public_ip_on_launch = favar.map_public_ip_on_launchlse
 
   tags = {
-    Name = "subnet-4"
+    Name = var.subnet-4_name
   }
 }
+
 resource "aws_internet_gateway" "my_igw" {
   vpc_id = aws_vpc.my_vpc.id
 
   tags = {
-    Name = "my_igw"
+    Name = var.igw_name
   }
 }
 
@@ -65,7 +66,7 @@ resource "aws_nat_gateway" "my_nat" {
   subnet_id     = aws_subnet.subnet_1.id  # Place NAT Gateway in one of the subnets
 
   tags = {
-    Name = "my_nat_gateway"
+    Name = var.nat_gateway_name
   }
 }
 
@@ -82,7 +83,7 @@ resource "aws_route_table" "private_rt" {
   }
 
   tags = {
-    Name = "private_rt"
+    Name = var.route_name
   }
 }
 
