@@ -1,12 +1,12 @@
 
 resource "aws_vpc" "my_vpc" {
 
-  cidr_block = var.vpc_cidr_block_range
+  cidr_block = "var.vpc_cidr_block_range"
   enable_dns_support = true
   enable_dns_hostnames = true
 
   tags = {
-    Name = var.vpc_name
+    Name = "var.vpc_name"
   }
 }
 resource "aws_subnet" "subnet_1" {
