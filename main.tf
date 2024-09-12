@@ -43,7 +43,7 @@ module "eks" {
     cluster_role_name = "cluster-role"     
     cluster_name  = "test" 
     iam_role_node  = "node-role"
-    eks_node_group_cluster_name  = "test-node-group" 
+    eks_node_group_cluster_name  = "test" 
     cluster_node_group_name  = "private-nodes" 
     instance_type   = ["t2.micro"]  
     desired_size  = 2
